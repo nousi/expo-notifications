@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Notifications } from "expo";
+import * as Notifications from "expo-notifications";
 
 export default function App() {
   return (
