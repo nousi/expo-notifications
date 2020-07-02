@@ -8,6 +8,12 @@ export default class App extends React.Component {
     isLocationPermitted: false,
   };
 
+  async _confirmNotificationPermission() {
+    const permission = await Permissions.getAsync(Permissions.NOTIFICATIONS);
+    if (permission.status === "granted") return true;
+    const askResult = await Permissions.askAsync(Permissions.NOTIFICATIONS);
+    return askResult.status === "granted";
+  }
   render() {
     return (
       <View style={styles.container}>
