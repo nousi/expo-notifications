@@ -20,6 +20,13 @@ export default class App extends React.Component {
     }
   }
 
+  async componentDidMount() {
+    this.setState({
+      isNotificationPermitted: await this._confirmNotificationPermission(),
+      isLocationPermitted: await this._confirmLocationPermission(),
+    });
+  }
+
   async _confirmLocationPermission() {
     const permissionIsValid = (permission: Permissions.PermissionResponse) => {
       if (permission.status !== "granted") return false;
