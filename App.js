@@ -40,6 +40,14 @@ export default class App extends React.Component {
       isLocationPermitted: await this._confirmLocationPermission(),
     });
     Notifications.addListener(this._onReceiveNotification);
+    await Location.startGeofencingAsync(TASK_NAME, [
+      {
+        identifier: '晴海トリトンスクエア',
+        latitude: 35.657413,
+        longitude: 139.782514,
+        radius: 300
+      }
+    ])
   }
 
   async _confirmNotificationPermission() {
