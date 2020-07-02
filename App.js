@@ -42,7 +42,13 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Hello, React Native!</Text>
+        <Text>
+          Notification Permission:
+          {this.state.isNotificationPermitted ? "○" : "×"}
+        </Text>
+        <Text>
+          Location Permission: {this.state.isLocationPermitted ? "○" : "×"}
+        </Text>
       </View>
     );
   }
