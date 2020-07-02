@@ -1,16 +1,14 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { Notifications } from "expo";
-import * as Notifications from "expo-notifications";
+import { StyleSheet, Text, View, Platform } from "react-native";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+export default class App extends React.Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text>Hello, React Native!</Text>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
