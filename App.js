@@ -10,10 +10,16 @@ export default class App extends React.Component {
 
   async _confirmNotificationPermission() {
     const permission = await Permissions.getAsync(Permissions.NOTIFICATIONS);
-    if (permission.status === "granted") return true;
-    const askResult = await Permissions.askAsync(Permissions.NOTIFICATIONS);
-    return askResult.status === "granted";
+    if (permission.status === "granted") {
+      return true;
+    } else {
+      const askResult = await Permissions.askAsync(Permissions.NOTIFICATIONS);
+      if (askResult.status === "granted") {
+        return true;
+      }
+    }
   }
+
   render() {
     return (
       <View style={styles.container}>
