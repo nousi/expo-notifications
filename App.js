@@ -20,6 +20,18 @@ export default class App extends React.Component {
     }
   }
 
+  async _confirmLocationPermission() {
+    const permissionIsValid = (permission: Permissions.PermissionResponse) => {
+      if (permission.status !== "granted") return false;
+      if (Platform.OS !== "ios") return true;
+      return permission.permissions.location.ios.scope === "always";
+    };
+    const permission = await Permissions.getAsync(Permissions.LOCATION);
+    if (permissionIsValid(permission)) return true;
+    const askResult = await Permissions.askAsync(Permissions.LOCATION);
+    return permissionIsValid(askResult);
+  }
+
   render() {
     return (
       <View style={styles.container}>
