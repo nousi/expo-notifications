@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, Platform, Button } from "react-native";
 import { Notifications } from "expo";
 import * as Permissions from "expo-permissions";
 import * as Location from "expo-location";
+import * as TaskManager from 'expo-task-manager'
+
 
 export default class App extends React.Component {
   state = {
@@ -60,6 +62,8 @@ export default class App extends React.Component {
   _onReceiveNotification(notification: Notification) {
     alert(notification.data.message);
   }
+
+  Location.startGeofencingAsync(taskName, regions)
 
   render() {
     return (
