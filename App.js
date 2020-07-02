@@ -8,6 +8,12 @@ export default class App extends React.Component {
     isLocationPermitted: false,
   };
 
+  async componentDidMount() {
+    this.setState({
+      isNotificationPermitted: await this._confirmNotificationPermission(),
+      isLocationPermitted: await this._confirmLocationPermission(),
+    });
+  }
   async _confirmNotificationPermission() {
     const permission = await Permissions.getAsync(Permissions.NOTIFICATIONS);
     if (permission.status === "granted") {
@@ -18,13 +24,6 @@ export default class App extends React.Component {
         return true;
       }
     }
-  }
-
-  async componentDidMount() {
-    this.setState({
-      isNotificationPermitted: await this._confirmNotificationPermission(),
-      isLocationPermitted: await this._confirmLocationPermission(),
-    });
   }
 
   async _confirmLocationPermission() {
