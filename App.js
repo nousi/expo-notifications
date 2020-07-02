@@ -5,6 +5,7 @@ import * as Permissions from "expo-permissions";
 import * as Location from "expo-location";
 import * as TaskManager from 'expo-task-manager'
 
+const TASK_NAME = 'GEOFENCE_TASK'
 
 export default class App extends React.Component {
   state = {
