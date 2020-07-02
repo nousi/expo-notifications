@@ -7,6 +7,25 @@ import * as TaskManager from 'expo-task-manager'
 
 const TASK_NAME = 'GEOFENCE_TASK'
 
+TaskManager.defineTask(TASK_NAME, ({ data, error }: any) => {
+  if (error) throw new Error()
+
+  const message = data.eventType === 
+  Location.GeofencingEventType.Enter ?
+    '出勤時間を入力してください' :
+    '退勤時間を入力してください'
+  Notifications.presentLocalNotificationAsync({
+    title: `現在${data.region.identifier}付近`,
+    body: message,
+    data: {
+      message: message
+    },
+    ios: {
+      _displayInForeground: false
+    }
+  })
+})
+
 export default class App extends React.Component {
   state = {
     isNotificationPermitted: false,
