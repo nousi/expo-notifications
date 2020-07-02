@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, Platform } from "react-native";
+import { StyleSheet, Text, View, Platform, Button } from "react-native";
 import { Notifications } from "expo";
 import * as Permissions from "expo-permissions";
 
@@ -43,12 +43,13 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <Text>
-          Notification Permission:
+          通知の権限:
           {this.state.isNotificationPermitted ? "○" : "×"}
         </Text>
         <Text>
-          Location Permission: {this.state.isLocationPermitted ? "○" : "×"}
+          位置情報の権限: {this.state.isLocationPermitted ? "○" : "×"}
         </Text>
+        <Button title="ローカル通知を送信する" />
       </View>
     );
   }
