@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View, Platform, Button } from "react-native";
 import { Notifications } from "expo";
 import * as Permissions from "expo-permissions";
+import * as Location from "expo-location";
 
 export default class App extends React.Component {
   state = {
