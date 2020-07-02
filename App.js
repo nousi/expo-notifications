@@ -8,6 +8,8 @@ export default class App extends React.Component {
   state = {
     isNotificationPermitted: false,
     isLocationPermitted: false,
+    location: null,
+    errorMessage: null,
   };
 
   async componentDidMount() {
